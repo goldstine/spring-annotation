@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <!-- 将类路径下的properties，将外部的配置文件导入容器中-->
+    <context:property-placeholder location="classpath:person.properties"/>
+    <!--包扫描,只要标注了@Controller @Service @Repository  @Component 注解，都会被自动的扫描加入容器中-->
+    <!--如果context:component-scan报错，是因为没有引入xmlns:context="http://www.springframework.org/schema/context"约束-->
+    <context:component-scan base-package="org.goldstine"></context:component-scan>
+    <bean id="Person" class="org.goldstine.bean.Person" scope="prototype" init-method="" destroy-method="">
+        <property name="age" value="18"></property>
+        <property name="name" value="zhangsan"></property>
+    </bean>
+
+<!--    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>   开启切面自动代理的-->
+</beans>
